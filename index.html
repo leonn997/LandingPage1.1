@@ -57,28 +57,22 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: clamp(1.5rem, 2vw, 2.2rem);
-      font-weight: 800;
-      color: var(--branco);
     }
 
-    /* AJUSTE DA LOGO AQUI: Tamanho total sem sobras */
-    .brand-badge {
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      display: block; /* Removido o grid para a imagem ocupar tudo */
-      background: var(--branco); /* Fundo branco para a logo ficar nítida */
-      border: 1px solid rgba(255,255,255,0.25);
-      overflow: hidden; /* Corta as rebarbas da imagem nas bordas redondas */
+    .brand-logo {
+      width: 170px;
+      height: 64px;
+      overflow: visible;
+      display: block;
     }
 
-    .brand-badge img {
+    .brand-logo img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Garante que a imagem preencha 100% do quadrado */
+      object-fit: contain;
       object-position: center;
       display: block;
+      filter: drop-shadow(0 3px 8px rgba(0,0,0,0.18));
     }
 
     .nav-wrap {
@@ -170,10 +164,9 @@
     .btn-primary { background: var(--branco); color: var(--roxo); }
     .btn-secondary { background: rgba(255,255,255,0.14); color: var(--branco); border: 1px solid var(--borda); }
 
-    /* AJUSTE DO MASCOTE AQUI: Ocupando 100% do local sem ficar escuro */
     .hero-media {
-      background: rgba(255,255,255,0.10); /* Mantido original */
-      border: 2px solid rgba(255,255,255,0.5); /* Mantido original */
+      background: rgba(255,255,255,0.10);
+      border: 2px solid rgba(255,255,255,0.5);
       border-radius: 28px;
       height: 420px;
       overflow: hidden;
@@ -183,7 +176,7 @@
     .hero-media img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* Faz a imagem preencher todo o container sem espaços vazios */
+      object-fit: cover;
       object-position: center;
       display: block;
     }
@@ -219,6 +212,24 @@
       padding: 24px;
       box-shadow: var(--sombra);
       border: 1px solid rgba(255,255,255,0.55);
+    }
+
+    .joined-block {
+      background: rgba(255,255,255,0.36);
+      border: 1px solid rgba(255,255,255,0.55);
+      border-radius: 32px;
+      padding: clamp(20px, 3vw, 34px);
+      box-shadow: var(--sombra);
+    }
+
+    .joined-block .card {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+    }
+
+    .joined-part + .joined-part {
+      margin-top: 26px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(31,41,55,0.10);
     }
 
     .icon {
@@ -265,6 +276,33 @@
       border-radius: 32px;
       padding: 32px;
       box-shadow: var(--sombra);
+    }
+
+    .mascot-card {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .mascot-photo {
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(156,39,176,.08), rgba(46,204,113,.12));
+    }
+
+    .mascot-photo img {
+      width: 100%;
+      height: 360px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .mascot-text p + p {
+      margin-top: 10px;
     }
 
     .steps {
@@ -343,10 +381,11 @@
     }
 
     @media (max-width: 980px) {
-      .hero-card, .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero-card, .grid-2, .grid-3, .grid-4, .mascot-card { grid-template-columns: 1fr; }
       .nav { flex-direction: column; align-items: flex-start; }
       .menu { justify-content: flex-start; }
       .hero-media { height: 320px; }
+      .mascot-photo img { height: 300px; }
     }
   </style>
 </head>
@@ -355,11 +394,9 @@
     <header>
       <div class="container nav">
         <a href="#home" class="brand" aria-label="Vida de Quatro Patas">
-          <span class="brand-badge">
-            <!-- NOME DA IMAGEM DA LOGO AQUI -->
-            <img src="logo.jpeg" alt="Logo Vida de Quatro Patas" />
+          <span class="brand-logo">
+            <img src="logo-transparente.png" alt="Logo Vida de Quatro Patas" />
           </span>
-          <span>Vida de Quatro Patas</span>
         </a>
         <nav class="menu" aria-label="Menu principal">
           <a href="#empresa">Empresa</a>
@@ -389,8 +426,7 @@
             </div>
           </div>
           <div class="hero-media" aria-label="Imagem destaque da landing page">
-            <!-- NOME DA IMAGEM DO MASCOTE AQUI -->
-            <img src="mascote.jpeg" alt="Mascote Vida de Quatro Patas" />
+            <img src="hero-caramelo.jpeg" alt="Pessoa segurando um cachorro com carinho" />
           </div>
         </div>
       </div>
@@ -413,6 +449,21 @@
             </p>
           </article>
         </div>
+
+        <article class="card mascot-card">
+          <div class="mascot-photo">
+            <img src="pacoca-transparente.png" alt="Mascote Paçoca, gatinho preto e branco segurando uma prancheta" />
+          </div>
+          <div class="mascot-text">
+            <div class="icon">🐾</div>
+            <h3>Conheça o Paçoca, nosso mascote</h3>
+            <p>Esse é o Paçoca. Preto, branco e com a patinha sempre estendida para um novo match.</p>
+            <p>O Paçoca foi um gatinho muito especial, mesmo depois de sua partida, continua sendo uma lembrança cheia de carinho e amor. Hoje, ele é a inspiração e o mascote do Vida de Quatro Patas.</p>
+            <p>Ele representa tudo o que nosso projeto acredita: que todo animal merece ser visto, amado e ter a chance de encontrar sua família ideal, até aqueles que muitas vezes são ignorados.</p>
+            <p>Sua patinha estendida virou símbolo de conexão, carinho e novos começos. Um convite para dar match com um companheiro de quatro patas e mudar duas vidas ao mesmo tempo: a do animal e a do adotante.</p>
+            <p>Porque os melhores encontros acontecem quando existe amor, cuidado e uma segunda chance. No Vida de Quatro Patas, seu novo melhor amigo pode estar a apenas um clique de distância.</p>
+          </div>
+        </article>
 
         <div class="grid-3" style="margin-top:22px;">
           <article class="card">
@@ -438,30 +489,24 @@
       <div class="container">
         <h2 class="section-title">Organograma da equipe</h2>
         <p class="section-subtitle">Estrutura resumida com papéis dos membros da equipe.</p>
-        <div class="grid-4">
+        <div class="grid-3">
+          <article class="card">
+            <div class="icon">🧠</div>
+            <h3>Leonardo Bazarin Junior</h3>
+            <p>Responsável pela estrutura do Front-end e pelo planejamento das etapas do projeto.</p>
+            <span class="team-role">Front-end / Planejamento</span>
+          </article>
           <article class="card">
             <div class="icon">💻</div>
-            <h3>Desenvolvimento (Leonardo Bazarin Junior e Wilian Miura Sato)</h3>
-            <p>A equipe é organizada em funções de desenvolvimento, banco de dados, ONGs e marketing, permitindo divisão de tarefas e melhor acompanhamento do projeto. </p>
-            <span class="team-role">Front-end / Lógica</span>
+            <h3>Wilian Miura Sato</h3>
+            <p>Responsável pelo desenvolvimento Back-end e pela organização do banco de dados.</p>
+            <span class="team-role">Back-end / Banco de dados</span>
           </article>
           <article class="card">
-            <div class="icon">🖌️</div>
-            <h3>Design (Anna Carolina de Moura)</h3>
-            <p>Cuida da identidade visual, organização das interfaces e coerência com o tema da startup.</p>
-            <span class="team-role">UX / UI</span>
-          </article>
-          <article class="card">
-            <div class="icon">📋</div>
-            <h3>Planejamento (Wilian Miura Sato e Leonardo Bazarin Junior)</h3>
-            <p>Organiza requisitos, documentação, etapas do projeto e alinhamento com o que foi pedido na disciplina.</p>
-            <span class="team-role">Requisitos</span>
-          </article>
-          <article class="card">
-            <div class="icon">📣</div>
-            <h3>Comunicação (Anna Carolina de Moura)</h3>
-            <p>Responsável pelo posicionamento da startup, linguagem comercial, CTAs e contato com o público.</p>
-            <span class="team-role">Marketing</span>
+            <div class="icon">🎨</div>
+            <h3>Anna Carolina de Moura</h3>
+            <p>Responsável pelo design visual da landing page e pela comunicação do projeto.</p>
+            <span class="team-role">Design / Comunicação</span>
           </article>
         </div>
       </div>
@@ -530,49 +575,51 @@
 
     <section id="fluxo">
       <div class="container">
-        <h2 class="section-title">Oferta e acesso ao produto</h2>
-        <p class="section-subtitle">Como utilizar o produto, em quais plataformas ele está disponível e qual é o fluxo básico de uso.</p>
-        <div class="grid-2">
-          <article class="card">
-            <div class="icon">🌐</div>
-            <h3>Plataforma disponível</h3>
-            <p>A solução está disponível em <strong>web</strong>, podendo ser acessada diretamente pelo navegador.</p>
-            <p style="margin-top:10px;">O usuário entra na página, conhece a proposta, acessa os animais, utiliza filtros, consulta informações e entra em contato com a iniciativa.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🛠️</div>
-            <h3>Como utilizar</h3>
-            <div class="steps">
-              <div class="step"><span class="step-number">1</span><div><strong>Acesse a home</strong><br><span class="small-note">Conheça a startup e navegue pelo menu principal.</span></div></div>
-              <div class="step"><span class="step-number">2</span><div><strong>Veja os animais</strong><br><span class="small-note">Use filtros e explore os perfis disponíveis para adoção.</span></div></div>
-              <div class="step"><span class="step-number">3</span><div><strong>Conheça as ONGs</strong><br><span class="small-note">Busque instituições, entenda a proposta e encontre apoio.</span></div></div>
-              <div class="step"><span class="step-number">4</span><div><strong>Entre em contato</strong><br><span class="small-note">Utilize os canais digitais para seguir no processo de adoção.</span></div></div>
+        <div class="joined-block">
+          <div class="joined-part">
+            <h2 class="section-title">Oferta e acesso ao produto</h2>
+            <p class="section-subtitle">Como utilizar o produto, em quais plataformas ele está disponível e qual é o fluxo básico de uso.</p>
+            <div class="grid-2">
+              <article class="card">
+                <div class="icon">🌐</div>
+                <h3>Plataforma disponível</h3>
+                <p>A solução está disponível em <strong>web</strong>, podendo ser acessada diretamente pelo navegador.</p>
+                <p style="margin-top:10px;">O usuário entra na página, conhece a proposta, acessa os animais, utiliza filtros, consulta informações e entra em contato com a iniciativa.</p>
+              </article>
+              <article class="card">
+                <div class="icon">🛠️</div>
+                <h3>Como utilizar</h3>
+                <div class="steps">
+                  <div class="step"><span class="step-number">1</span><div><strong>Acesse a home</strong><br><span class="small-note">Conheça a startup e navegue pelo menu principal.</span></div></div>
+                  <div class="step"><span class="step-number">2</span><div><strong>Veja os animais</strong><br><span class="small-note">Use filtros e explore os perfis disponíveis para adoção.</span></div></div>
+                  <div class="step"><span class="step-number">3</span><div><strong>Conheça as ONGs</strong><br><span class="small-note">Busque instituições, entenda a proposta e encontre apoio.</span></div></div>
+                  <div class="step"><span class="step-number">4</span><div><strong>Entre em contato</strong><br><span class="small-note">Utilize os canais digitais para seguir no processo de adoção.</span></div></div>
+                </div>
+              </article>
             </div>
-          </article>
-        </div>
-      </div>
-    </section>
+          </div>
 
-    <section>
-      <div class="container">
-        <h2 class="section-title">Abordagem comercial</h2>
-        <p class="section-subtitle">Linguagem persuasiva, benefícios e chamadas para ação voltadas ao público-alvo.</p>
-        <div class="grid-3">
-          <article class="card">
-            <div class="icon">💬</div>
-            <h3>Linguagem orientada ao cliente</h3>
-            <p>O texto do site destaca acolhimento, praticidade, confiança e valor social da solução.</p>
-          </article>
-          <article class="card">
-            <div class="icon">📈</div>
-            <h3>Benefícios e valor da solução</h3>
-            <p>Mais organização, melhor visibilidade para os animais e uma experiência mais clara para quem deseja adotar.</p>
-          </article>
-          <article class="card">
-            <div class="icon">🚀</div>
-            <h3>Chamadas para ação</h3>
-            <p><a href="#produto" style="color:var(--roxo-escuro); font-weight:700;">Saiba mais</a>, <a href="#fluxo" style="color:var(--roxo-escuro); font-weight:700;">Conheça o fluxo</a> e <a href="#contato" style="color:var(--roxo-escuro); font-weight:700;">Entre em contato</a>.</p>
-          </article>
+          <div class="joined-part">
+            <h2 class="section-title">Abordagem comercial</h2>
+            <p class="section-subtitle">Linguagem persuasiva, benefícios e chamadas para ação voltadas ao público-alvo.</p>
+            <div class="grid-3">
+              <article class="card">
+                <div class="icon">💬</div>
+                <h3>Linguagem orientada ao cliente</h3>
+                <p>O texto do site destaca acolhimento, praticidade, confiança e valor social da solução.</p>
+              </article>
+              <article class="card">
+                <div class="icon">📈</div>
+                <h3>Benefícios e valor da solução</h3>
+                <p>Mais organização, melhor visibilidade para os animais e uma experiência mais clara para quem deseja adotar.</p>
+              </article>
+              <article class="card">
+                <div class="icon">🚀</div>
+                <h3>Chamadas para ação</h3>
+                <p><a href="#produto" style="color:var(--roxo-escuro); font-weight:700;">Saiba mais</a>, <a href="#fluxo" style="color:var(--roxo-escuro); font-weight:700;">Conheça o fluxo</a> e <a href="#contato" style="color:var(--roxo-escuro); font-weight:700;">Entre em contato</a>.</p>
+              </article>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -597,29 +644,48 @@
     </section>
 
     <section id="contato">
-        <div class="container">
-            <h2 class="section-title">Contato</h2>
-            <div class="card">
-                <form class="contact-form">
-                    <input type="text" placeholder="Seu nome" required>
-                    <input type="email" placeholder="Seu e-mail" required>
-                    <textarea placeholder="Sua mensagem"></textarea>
-                    <button type="submit" class="btn btn-primary" style="background: var(--roxo); color: white;">Enviar Mensagem</button>
-                </form>
-            </div>
+      <div class="container">
+        <h2 class="section-title">Informações de contato</h2>
+        <p class="section-subtitle">Canais institucionais para comunicação com o público e formulário funcional de demonstração.</p>
+        <div class="grid-2">
+          <article class="card">
+            <div class="icon">📧</div>
+            <h3>Canais da startup</h3>
+            <p><strong>E-mail:</strong> vidaquatropatas164@gmail.com</p>
+            <p><strong>Instagram:</strong> @vida4.patas</p>
+            <p><strong>WhatsApp:</strong> (11) 94716-5528</p>
+            <p><strong>Atendimento:</strong> online pela landing page e pelas redes sociais.</p>
+          </article>
+          <article class="card">
+            <h3 style="margin-top:0;">Formulário de contato</h3>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensagem enviada com sucesso!');">
+              <input type="text" placeholder="Seu nome" aria-label="Seu nome" required>
+              <input type="email" placeholder="Seu e-mail" aria-label="Seu e-mail" required>
+              <textarea placeholder="Digite sua mensagem" aria-label="Digite sua mensagem" required></textarea>
+              <button class="btn" style="background: var(--gradiente); color: white;">Enviar mensagem</button>
+            </form>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section id="redes">
+      <div class="container">
+        <h2 class="section-title">Redes sociais com ancoragem</h2>
+        <p class="section-subtitle">Entregável da fase com acesso direto aos canais digitais da startup.</p>
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/vida4.patas/#" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="social-link" href="https://wa.me/5511947165528" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="social-link" href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a class="social-link" href="mailto:contato@vidadequatropatas.com">E-mail</a>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer id="redes">
+  <footer>
     <div class="container">
-      <p>&copy; 2024 Vida de Quatro Patas. Todos os direitos reservados.</p>
-      <div class="socials">
-        <a href="https://www.instagram.com/vida4.patas/" class="social-link">Instagram</a>
-        <a href="#" class="social-link">Facebook</a>
-        <a href="https://wa.me/5511999999999" class="social-link">WhatsApp</a>
-        <a class="social-link" href="mailto:contato@vidadequatropatas.com">E-mail</a>
-      </div>
+      <p><strong>Vida Quatro Patas</strong> — Landing Page</p>
     </div>
   </footer>
 </body>
