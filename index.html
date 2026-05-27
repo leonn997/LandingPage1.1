@@ -226,6 +226,10 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.07);
     }
 
+    .joined-block .grid-2 {
+      align-items: start;
+    }
+
     .joined-part + .joined-part {
       margin-top: 26px;
       padding-top: 26px;
@@ -270,6 +274,23 @@
       background: rgba(156,39,176,.10);
     }
 
+    .team-photo {
+      width: 100%;
+      height: 230px;
+      margin-bottom: 18px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(135deg, rgba(156,39,176,.10), rgba(46,204,113,.12));
+    }
+
+    .team-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
     .highlight {
       background: var(--gradiente);
       color: var(--branco);
@@ -281,7 +302,7 @@
     .mascot-card {
       margin-top: 22px;
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 240px 1fr 260px;
       gap: 26px;
       align-items: center;
     }
@@ -295,8 +316,24 @@
 
     .mascot-photo img {
       width: 100%;
-      height: 360px;
+      height: 300px;
       object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .mascot-real-photo {
+      width: 100%;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    }
+
+    .mascot-real-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       object-position: center;
       display: block;
     }
@@ -386,6 +423,7 @@
       .menu { justify-content: flex-start; }
       .hero-media { height: 320px; }
       .mascot-photo img { height: 300px; }
+      .mascot-real-photo { height: 260px; }
     }
   </style>
 </head>
@@ -463,6 +501,9 @@
             <p>Sua patinha estendida virou símbolo de conexão, carinho e novos começos. Um convite para dar match com um companheiro de quatro patas e mudar duas vidas ao mesmo tempo: a do animal e a do adotante.</p>
             <p>Porque os melhores encontros acontecem quando existe amor, cuidado e uma segunda chance. No Vida de Quatro Patas, seu novo melhor amigo pode estar a apenas um clique de distância.</p>
           </div>
+          <div class="mascot-real-photo">
+            <img src="pacoca-foto.png" alt="Foto real do gato Paçoca" />
+          </div>
         </article>
 
         <div class="grid-3" style="margin-top:22px;">
@@ -491,19 +532,25 @@
         <p class="section-subtitle">Estrutura resumida com papéis dos membros da equipe.</p>
         <div class="grid-3">
           <article class="card">
-            <div class="icon">🧠</div>
+            <div class="team-photo">
+              <img src="leonardo.png" alt="Foto de Leonardo Bazarin Junior" />
+            </div>
             <h3>Leonardo Bazarin Junior</h3>
             <p>Responsável pela estrutura do Front-end e pelo planejamento das etapas do projeto.</p>
             <span class="team-role">Front-end / Planejamento</span>
           </article>
           <article class="card">
-            <div class="icon">💻</div>
+            <div class="team-photo">
+              <img src="wilian.png" alt="Foto de Wilian Miura Sato" />
+            </div>
             <h3>Wilian Miura Sato</h3>
             <p>Responsável pelo desenvolvimento Back-end e pela organização do banco de dados.</p>
             <span class="team-role">Back-end / Banco de dados</span>
           </article>
           <article class="card">
-            <div class="icon">🎨</div>
+            <div class="team-photo">
+              <img src="anna.png" alt="Foto de Anna Carolina de Moura" />
+            </div>
             <h3>Anna Carolina de Moura</h3>
             <p>Responsável pelo design visual da landing page e pela comunicação do projeto.</p>
             <span class="team-role">Design / Comunicação</span>
@@ -600,6 +647,7 @@
           </div>
 
           <div class="joined-part">
+            
             <div class="grid-3">
               <article class="card">
                 <div class="icon">💬</div>
